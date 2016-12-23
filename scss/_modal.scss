@@ -18,6 +18,8 @@
   left: 0;
   z-index: $zindex-modal;
   display: none;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
@@ -40,9 +42,12 @@
 
 // Shell div to position the modal with bottom padding
 .modal-dialog {
-  position: relative;
-  width: auto;
+  width: $modal-md;
   margin: $modal-dialog-margin;
+
+  @include media-breakpoint-up(sm) {
+    margin: $modal-dialog-sm-up-margin-y auto;
+  }
 }
 
 // Actual modal
@@ -55,6 +60,10 @@
   @include box-shadow($modal-content-xs-box-shadow);
   // Remove focus outline from opened modal
   outline: 0;
+
+  @include media-breakpoint-up(sm) {
+    @include box-shadow($modal-content-sm-up-box-shadow);
+  }
 }
 
 // Modal background
@@ -114,21 +123,14 @@
   overflow: scroll;
 }
 
-// Scale up the modal
-@include media-breakpoint-up(sm) {
-  // Automatically set modal's width for larger viewports
-  .modal-dialog {
-    max-width: $modal-md;
-    margin: $modal-dialog-sm-up-margin-y auto;
-  }
 
-  .modal-content {
-    @include box-shadow($modal-content-sm-up-box-shadow);
-  }
+//
+// Modal sizing
+//
 
-  .modal-sm { max-width: $modal-sm; }
-}
+// Always let the small modal be available
+.modal-sm { width: $modal-sm; }
 
 @include media-breakpoint-up(lg) {
-  .modal-lg { max-width: $modal-lg; }
+  .modal-lg { width: $modal-lg; }
 }

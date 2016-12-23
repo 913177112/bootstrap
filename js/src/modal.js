@@ -234,7 +234,7 @@ const Modal = (($) => {
         document.body.appendChild(this._element)
       }
 
-      this._element.style.display = 'block'
+      this._element.style.display = 'flex'
       this._element.removeAttribute('aria-hidden')
       this._element.scrollTop = 0
 
